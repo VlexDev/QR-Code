@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Générateur de QR Code gratuit - Créez des QR codes pour URLs, textes, contacts et plus">
+    <meta name="keywords" content="QR Code, générateur, gratuit, URL, texte">
+    <meta name="author" content="Votre Nom">
+    
+    <title>QRGen Pro - Générateur de QR Code Professionnel</title>
+    
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔳</text></svg>">
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-qrcode"></i>
+                <h1>QRGen Pro</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> Accueil</a>
+                <a href="#" onclick="showSection('about')"><i class="fas fa-info-circle"></i> À Propos</a>
+                <a href="#" onclick="showSection('usage')"><i class="fas fa-question-circle"></i> Utilisation</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="home-section" class="main-section active">
+                <div class="hero">
+                    <h2><i class="fas fa-bolt"></i> Générateur de QR Code Professionnel</h2>
+                    <p class="subtitle">Créez des QR codes personnalisés en quelques secondes</p>
+                </div>
+
+                <div class="qr-generator">
+                    <div class="input-group">
+                        <div class="input-with-icon">
+                            <i class="fas fa-link"></i>
+                            <input type="text" id="text" placeholder="Entrez le texte, URL, email, numéro de téléphone..." />
+                            <button class="clear-btn" onclick="clearInput()" title="Effacer">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="options">
+                            <div class="option">
+                                <label for="size">Taille:</label>
+                                <select id="size">
+                                    <option value="128">128x128</option>
+                                    <option value="256" selected>256x256</option>
+                                    <option value="512">512x512</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option">
+                                <label for="color">Couleur:</label>
+                                <input type="color" id="color" value="#000000">
+                            </div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button class="btn-primary" onclick="generateQRCode()">
+                                <i class="fas fa-qrcode"></i> Générer QR Code
+                            </button>
+                            <button class="btn-secondary" onclick="downloadQRCode()" id="download-btn" disabled>
+                                <i class="fas fa-download"></i> Télécharger
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="qr-display">
+                        <div id="qrcode"></div>
+                        <div class="qr-placeholder" id="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                            <p>Votre QR Code apparaîtra ici</p>
+                        </div>
+                        <div class="qr-info" id="qr-info">
+                            <p><i class="fas fa-info-circle"></i> <span id="qr-content-info"></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-links">
+                    <h3><i class="fas fa-bolt"></i> Exemples Rapides</h3>
+                    <div class="quick-buttons">
+                        <button class="quick-btn" onclick="setExample('https://github.com')">
+                            <i class="fab fa-github"></i> GitHub
+                        </button>
+                        <button class="quick-btn" onclick="setExample('https://www.linkedin.com')">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </button>
+                        <button class="quick-btn" onclick="setExample('mailto:exemple@email.com')">
+                            <i class="fas fa-envelope"></i> Email
+                        </button>
+                        <button class="quick-btn" onclick="setExample('TEL:+33123456789')">
+                            <i class="fas fa-phone"></i> Téléphone
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about-section" class="main-section">
+                <h2><i class="fas fa-info-circle"></i> À Propos</h2>
+                <div class="about-content">
+                    <div class="about-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Notre Mission</h3>
+                        <p>Fournir un outil simple et efficace pour créer des QR codes personnalisés gratuitement.</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Technologies</h3>
+                        <p>HTML5, CSS3, JavaScript pur avec la bibliothèque QRCode.js</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Sécurité</h3>
+                        <p>Tous les QR codes sont générés localement dans votre navigateur.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="usage-section" class="main-section">
+                <h2><i class="fas fa-question-circle"></i> Comment Utiliser</h2>
+                <div class="steps">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <h3>Entrez le Texte</h3>
+                        <p>Saisissez l'URL, le texte, ou les informations que vous souhaitez encoder</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <h3>Personnalisez</h3>
+                        <p>Ajustez la taille et la couleur selon vos besoins</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <h3>Générez</h3>
+                        <p>Cliquez sur "Générer QR Code" pour créer votre QR code</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <h3>Téléchargez</h3>
+                        <p>Téléchargez votre QR code en format PNG</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-qrcode"></i> QRGen Pro</h4>
+                    <p>Générateur de QR Code gratuit et open-source</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens</h4>
+                    <a href="https://github.com/VlexDev" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="footer-section">
+                    <p>© 2024 QRGen Pro. Tous droits réservés.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
