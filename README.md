@@ -1,10 +1,10 @@
-# QRGen Pro - Générateur de QR Code Professionnel
+# QRGen Pro - Générateur de QR Code 
 
 ![QRGen Pro Screenshot](screenshot.png)
 
 Un générateur de QR code moderne, responsive et professionnel construit avec HTML, CSS et JavaScript.
 
-## ✨ Fonctionnalités
+ ✨ Fonctionnalités
 
 - 🎨 **Personnalisation avancée** : Taille et couleur personnalisables
 - ⚡ **Génération rapide** : QR codes générés en temps réel
@@ -14,9 +14,7 @@ Un générateur de QR code moderne, responsive et professionnel construit avec H
 - 🔧 **Local Storage** : Sauvegarde de votre dernier texte
 - ⌨️ **Raccourcis clavier** : Ctrl+Enter pour générer
 
-## 🚀 Démo
 
-[Lien vers la démo en ligne](#) *(Ajoutez votre lien ici)*
 
 ## 🛠️ Installation
 
